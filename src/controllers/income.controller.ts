@@ -47,10 +47,27 @@ export function create(req: Request, res: Response) {
 }
 
 export function list(req: Request, res: Response) {
+  const data = incomes.map((income) => {
+    if(income.tag_id) {
+      return {
+        id: income.id,
+        description: income.description,
+        value: income.value,
+        tag: tags.find((tag) => tag.id === income.tag_id)
+      };
+    }
+    return {
+      id: income.id,
+      description: income.description,
+      value: income.value,
+      tag: null
+    };
+  });
+
   return res.status(200).json({
     status: 'Ok!',
     message: 'This income data has been fetched successfully!',
-    incomes
+    data
   });
 }
 
@@ -60,7 +77,7 @@ export function search(req: Request, res: Response) {
   const income = incomes.find((income) => income.id === id);
 
   if(!income) {
-    res.status(404).json({
+    return res.status(404).json({
       status: 'Internal server error!',
       message: 'This income doesn\'t exist!'
     });
@@ -69,7 +86,12 @@ export function search(req: Request, res: Response) {
   res.status(200).json({
     status: 'Ok',
     message: 'This income data has been fetched successfully!',
-    data: income
+    data: {
+      id: income.id,
+      description: income.description,
+      value: income.value,
+      tag: income.tag_id ? tags.find((tag) => tag.id === income.tag_id) : null
+    }
   });
 }
 

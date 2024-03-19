@@ -47,10 +47,27 @@ export function create(req: Request, res: Response) {
 }
 
 export function list(req: Request, res: Response) {
+  const data = outgoings.map((outgoing) => {
+    if(outgoing.tag_id) {
+      return {
+        id: outgoing.id,
+        description: outgoing.description,
+        value: outgoing.value,
+        tag: tags.find((tag) => tag.id === outgoing.tag_id)
+      };
+    }
+    return {
+      id: outgoing.id,
+      description: outgoing.description,
+      value: outgoing.value,
+      tag: null
+    };
+  });
+
   return res.status(200).json({
     status: 'Ok!',
     message: 'This outgoing data has been fetched successfully!',
-    outgoings
+    data
   });
 }
 
@@ -60,7 +77,7 @@ export function search(req: Request, res: Response) {
   const outgoing = outgoings.find((outgoing) => outgoing.id === id);
 
   if(!outgoing) {
-    res.status(404).json({
+    return res.status(404).json({
       status: 'Internal server error!',
       message: 'This outgoing doesn\'t exist!'
     });
@@ -69,7 +86,12 @@ export function search(req: Request, res: Response) {
   res.status(200).json({
     status: 'Ok',
     message: 'This outgoing data has been fetched successfully!',
-    data: outgoing
+    data: {
+      id: outgoing.id,
+      description: outgoing.description,
+      value: outgoing.value,
+      tag: outgoing.tag_id ? tags.find((tag) => tag.id === outgoing.tag_id) : null
+    }
   });
 }
 

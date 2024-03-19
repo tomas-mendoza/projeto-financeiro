@@ -1,0 +1,228 @@
+{
+  "info": {
+    "name": "projeto-financeiro",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Index",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{url}}/"
+      }
+    },
+    {
+      "name": "Tag",
+      "item": [
+        {
+          "name": "List",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{url}}/tags/"
+          }
+        },
+        {
+          "name": "Create",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{url}}/tags/create",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"teste\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Search",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{url}}/tags/"
+          }
+        },
+        {
+          "name": "Update",
+          "event": [],
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": "{{url}}/tags/update/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"teste 2\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "event": [],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{url}}/tags/delete/3"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Income",
+      "item": [
+        {
+          "name": "Create",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{url}}/incomes/create",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"teste\",\n  \"value\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "List",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{url}}/incomes/"
+          }
+        },
+        {
+          "name": "Search",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{url}}/tags/"
+          }
+        },
+        {
+          "name": "Update",
+          "event": [],
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": "{{url}}/incomes/update/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"teste\",\n  \"value\": 10,\n  \"tag_id\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "event": [],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{url}}/incomes/delete/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Outgoing",
+      "item": [
+        {
+          "name": "List",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{url}}/outgoings/"
+          }
+        },
+        {
+          "name": "Update",
+          "event": [],
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": "{{url}}/outgoings/update/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"teste\",\n  \"value\": 10,\n  \"tag_id\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Search",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{url}}/outgoings/1"
+          }
+        },
+        {
+          "name": "Create",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{url}}/outgoings/create",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"teste\",\n  \"value\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete",
+          "event": [],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{url}}/outgoings/delete/1"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "url",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
