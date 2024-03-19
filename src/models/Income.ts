@@ -1,10 +1,8 @@
-import Tag from './Tag';
-
 type Income = {
   id: number;
   description: string;
   value: number;
-  tag: Tag
+  tag_id?: number
 }
 
 export default Income;

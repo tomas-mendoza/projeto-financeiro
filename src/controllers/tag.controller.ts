@@ -14,7 +14,7 @@ export function create(req: Request, res: Response) {
 
   res.status(200).json({
     status: 'Created!',
-    message: 'The tag has been created successfully!',
+    message: 'This tag has been created successfully!',
     data: tag
   });
 }
@@ -76,7 +76,7 @@ export function deleteTag(req: Request, res: Response) {
 
   const index = tags.findIndex((tag) => tag.id === id);
 
-  if(!index) {
+  if(index < 0) {
     return res.status(404).json({
       status: 'Internal server error!',
       message: 'This tag doesn\'t exist!'
@@ -87,6 +87,6 @@ export function deleteTag(req: Request, res: Response) {
 
   res.status(200).json({
     status: 'Deleted!',
-    message: 'The tag has been deleted successfully!'
+    message: 'This tag has been deleted successfully!'
   });
 }
